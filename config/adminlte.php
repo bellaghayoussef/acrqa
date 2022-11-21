@@ -358,7 +358,7 @@ return [
             'text'        => ' profil',
            'url'         => 'profil',
             'icon'        => 'fas fa-user',
-            'can'         => 'super admin',
+           
             
            
         ],
