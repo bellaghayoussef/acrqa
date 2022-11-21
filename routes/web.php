@@ -19,7 +19,8 @@ use App\Http\Controllers\StampsController;
 
 Route::get('/', function () {
 
-    return redirect(app()->getLocale());
+    return redirect()->route('login');
+
 });
 
 Auth::routes();
@@ -42,7 +43,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
          ->name('profil');
 Route::put('/signature', [UsersController::class, 'signature'])
          ->name('signature');
-         
+
 Route::group([
     'prefix' => 'users',
 ], function () {
