@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\countries as Country;
-use App\Models\user;
+use App\Models\User as user;
 use Illuminate\Http\Request;
 use Exception;
 use Twilio\Rest\Client ;
