@@ -12,7 +12,7 @@ use Response;
 use Illuminate\Support\Facades\Hash;
 use App\Models\countries;
 use Crypt;
-use Spatie\Permission\Models\Role;
+
 class LoginController extends Controller
 {
     /*
@@ -63,25 +63,25 @@ class LoginController extends Controller
      $code = mt_rand(1000, 9999);
 
 
-// try {
-//       $sid = 'AC6df6b0f4c3d2f8188cb2cf40199f9d66';
-// $token = '5adfa781ac9100d442d67ea6147b4337';
-// $cliente = new Client($sid, $token);
+try {
+      $sid = 'AC6df6b0f4c3d2f8188cb2cf40199f9d66';
+$token = '5adfa781ac9100d442d67ea6147b4337';
+$cliente = new Client($sid, $token);
 
 
-// $cliente->messages->create(
-//     // the number you'd like to send the message to
-//      $phoneNum,
-//     array(
-//         // A Twilio phone number you purchased at twilio.com/console
-//         'from' =>  '+14256005591',
-//         // the body of the text message you'd like to send
-//         'body' => 'Hello dear customer, Your  access code is: '.$code .'مرحبا عزيزي المستخدم ' .'رقم التفعيل في  هو : '.$code
-//     )
-// );
-// } catch (Exception $e) {
-//    return Response::json(array('success' => false)); 
-// }
+$cliente->messages->create(
+    // the number you'd like to send the message to
+     $phoneNum,
+    array(
+        // A Twilio phone number you purchased at twilio.com/console
+        'from' =>  '+14256005591',
+        // the body of the text message you'd like to send
+        'body' => 'Hello dear customer, Your  access code is: '.$code .'مرحبا عزيزي المستخدم ' .'رقم التفعيل في  هو : '.$code
+    )
+);
+} catch (Exception $e) {
+   return Response::json(array('success' => false)); 
+}
 
 
 
