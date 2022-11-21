@@ -1,0 +1,56 @@
+[
+    {
+        "model-name": "Failedjob",
+        "resource-file": "failedjobs.json",
+        "table-name": "failed_jobs"
+    },
+    {
+        "model-name": "Migration",
+        "resource-file": "migrations.json",
+        "table-name": "migrations"
+    },
+    {
+        "model-name": "Modelhaspermission",
+        "resource-file": "modelhaspermissions.json",
+        "table-name": "model_has_permissions"
+    },
+    {
+        "model-name": "Modelhasrole",
+        "resource-file": "modelhasroles.json",
+        "table-name": "model_has_roles"
+    },
+    {
+        "model-name": "Passwordreset",
+        "resource-file": "passwordresets.json",
+        "table-name": "password_resets"
+    },
+    {
+        "model-name": "Permission",
+        "resource-file": "permissions.json",
+        "table-name": "permissions"
+    },
+    {
+        "model-name": "Personalaccesstoken",
+        "resource-file": "personalaccesstokens.json",
+        "table-name": "personal_access_tokens"
+    },
+    {
+        "model-name": "Rolehaspermission",
+        "resource-file": "rolehaspermissions.json",
+        "table-name": "role_has_permissions"
+    },
+    {
+        "model-name": "Role",
+        "resource-file": "roles.json",
+        "table-name": "roles"
+    },
+    {
+        "model-name": "User",
+        "resource-file": "users.json",
+        "table-name": "users"
+    },
+    {
+        "model-name": "stamp",
+        "resource-file": "stamps.json"
+    }
+]
