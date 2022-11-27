@@ -47,13 +47,13 @@ $users = App\Models\User::all();
  
 
 <div class="form-check col-md-12">
-      @if($letter->approved != 1 ||$letter->approved != "1")
+
   <input class="form-check-input" type="checkbox" value="" checked name="Signatured"  id="flexCheckDefault">
 
   <label class="form-check-label" for="flexCheckDefault">
   {{ trans('letters.Signature') }}
   </label>
-  @endif
+
 </div>
 <input type="hidden" name="Signature"  id="Signature" value="{ old('Signature', optional($letter)->Signature) }}">
 
