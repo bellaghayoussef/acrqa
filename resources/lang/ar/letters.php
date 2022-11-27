@@ -106,5 +106,6 @@ return [
     'parameter_name_title' => 'Parameter Name',
     'field_name_title' => 'Field Name',
     'field_type_title' => 'Field Type',
+    'accepted' => 'accepte',
 
 ];

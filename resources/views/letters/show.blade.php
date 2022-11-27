@@ -24,11 +24,14 @@ $users = App\Models\User::all();
 <br>
 <br>
 <br>
+
         <div class="mb-3" style="align-self: flex-end;">
             {{ $letter->code }}<br>
-            {!! DNS1D::getBarcodeHTML($letter->code, "C128",1.4,16) !!}
+   
+ <?php 
+            echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG($letter->code, "C128",1.4,16) . '" alt="barcode"   />';
+            ?>
         </div>
-
         <dl class="dl-horizontal">
           
             <dt>{{ trans('letters.from') }}</dt>
@@ -41,14 +44,29 @@ $users = App\Models\User::all();
           
            
           {!! $letter->message !!}
+<br>
+<br>
+          <div class="row">
           <div class="col-md-3">
-              @if($letter->Signature == '1')
+           
          <h2> {{ $letter->sender->first_name ." " . $letter->sender->last_name }}</h2>
+         <br>
+          <h3> {{ $letter->sender->Profession }}</h3>
           <br>
           <img src="{{ asset($letter->sender->Signature) }}" style="    max-width: 300px;" type="text" id="image" readonly>
+       
+          </div>
+<div class="col-md-3"></div> <div class="col-md-3"></div>
+           <div class="col-md-3">
+              @if($letter->accepted != null)
+         <h2> {{ $letter->recever->first_name ." " . $letter->recever->last_name }}</h2>
+         <br>
+          <h3> {{ $letter->recever->Profession }}</h3>
+          <br>
+          <img src="{{ asset($letter->recever->Signature) }}" style="    max-width: 300px;" type="text" id="image" readonly>
           @endif 
           </div>
-         
+         </div>
 
 
         </dl>
@@ -74,16 +92,23 @@ $users = App\Models\User::all();
 
     </div>
 </div>
+
+
 </div>
-
-
 <div>
+    @if($letter->to == auth()->user()->id && $letter->accepted != 1)
+ 
+                        <a class="btn btn-success" href="{{route('accepted',$letter->id)}}" value="{{ trans('letters.update') }}">{{ trans('letters.accepted') }}</a>
+                 
+ @endif
+
       <button class="btn btn-success" title="{{ trans('letters.delete') }}" onclick="printReport()">
                                             Print
                                         </button>
 </div>
 
-
+<br>
+<br>
 
 
 @endsection

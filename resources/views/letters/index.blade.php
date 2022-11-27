@@ -79,13 +79,16 @@
                                         <a href="{{ route('letters.letter.show', $letter->id ) }}" class="btn btn-info" title="{{ trans('letters.show') }}">
                                             <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
                                         </a>
+                                        @if(auth()->user()->id == $letter->from || auth()->user()->hasRole('super admin'))
                                         <a href="{{ route('letters.letter.edit', $letter->id ) }}" class="btn btn-primary" title="{{ trans('letters.edit') }}">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
 
+
                                         <button type="submit" class="btn btn-danger" title="{{ trans('letters.delete') }}" onclick="return confirm(&quot;{{ trans('letters.confirm_delete') }}&quot;)">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </button>
+                                         @endif
                                     </div>
 
                                 </form>
@@ -99,10 +102,7 @@
             </div>
         </div>
 
-        <div class="panel-footer">
-            {!! $letters->render() !!}
-        </div>
-        
+     
         @endif
     
     </div>

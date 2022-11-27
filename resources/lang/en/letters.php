@@ -57,7 +57,7 @@ return [
     'show_all' => 'Show All Letter',
     'add' => 'Send',
     'update' => 'Send',
-    
+    'accepted' => 'accepte',
     'confirm_delete' => 'Click Ok to delete Letter.',
     'none_available' => 'No Letters Available.',
     'model_plural' => 'Letters',

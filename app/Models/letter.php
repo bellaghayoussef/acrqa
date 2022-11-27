@@ -34,7 +34,9 @@ class letter extends Model
                   'to',
                   'Subject',
                   'message',
-                  'Signature'
+                  'Signature',
+                  'vu',
+                  'accepted'
               ];
 
     /**

@@ -133,5 +133,7 @@ Route::group([
 
 Route::get('/approved/{letter}',[LettersController::class, 'approved'])
          ->name('approved')->where('id', '[0-9]+');
+         Route::get('/accepted/{letter}',[LettersController::class, 'accepted'])
+         ->name('accepted')->where('id', '[0-9]+');
          
 });

@@ -17,8 +17,15 @@ class LettersController extends Controller
      */
     public function index()
     {
-        $letters = letter::paginate(25);
-
+       
+ if(auth()->user()->hasRole('super admin')){
+            $letters = letter::paginate(25);
+       }else{
+        $letters = letter::where('from',auth()->user()->id)->orwhere(function ($query)  {
+    $query->where('to',  auth()->user()->id)
+          ->Where('approved', '1');
+})->paginate(25);
+       }
         return view('letters.index', compact('letters'));
     }
 
@@ -79,9 +86,14 @@ $data['code'] =\Carbon\Carbon::today()->toDateString()."- out -". $second;
      */
     public function show($id)
     {
-        $letter = letter::findOrFail($id);
 
+        $letter = letter::findOrFail($id);
+ if(auth()->user()->id == $letter->to){
+    $letter->vu = 1;
+    $letter->save();
+ }
         return view('letters.show', compact('letter'));
+ 
     }
 
     /**
@@ -94,7 +106,10 @@ $data['code'] =\Carbon\Carbon::today()->toDateString()."- out -". $second;
     public function edit($id)
     {
         $letter = letter::findOrFail($id);
-        
+         if(auth()->user()->id == $letter->to){
+    $letter->vu = 1;
+    $letter->save();
+ }
 
         return view('letters.edit', compact('letter'));
     }
@@ -180,5 +195,16 @@ $data['code'] =\Carbon\Carbon::today()->toDateString()."- out -". $second;
 
         return view('letters.show', compact('letter'));
     }
+
+     public function accepted($id)
+    {
+        $letter = letter::findOrFail($id);
+        $letter->accepted = 1;
+        $letter->save();
+
+        return view('letters.show', compact('letter'));
+    }
+
+    
 
 }

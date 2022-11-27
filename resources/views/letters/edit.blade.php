@@ -38,17 +38,26 @@
             @include ('letters.form', [
                                         'letter' => $letter,
                                       ])
-  @if($letter->approved == 1 || $letter->approved != "1")
-                  
+  @if($letter->approved != 1 || $letter->approved != "1")
+                   @if(auth()->user()->hasRole('super admin') || $letter->from == auth()->user()->id)
                         <input class="btn btn-primary" type="submit" value="{{ trans('letters.update') }}">
+
+ @endif
+
                         
-                 @if(auth()->user()->hasRole('super admin'))
+                 @if((auth()->user()->hasRole('super admin')))
              
                       <div class="col-md-offset-2 col-md-4">
                         <a class="btn btn-success" href="{{route('approved',$letter->id)}}" value="{{ trans('letters.update') }}">{{ trans('letters.approved') }}</a>
                     </div>
                     @endif
-                     @endif
+
+
+                      @elseif($letter->to == auth()->user()->id && $letter->accepted != 1)
+  <div class="col-md-offset-2 col-md-4">
+                        <a class="btn btn-success" href="{{route('accepted',$letter->id)}}" value="{{ trans('letters.update') }}">{{ trans('letters.accepted') }}</a>
+                    </div>
+ @endif
         
 
                 
@@ -60,7 +69,7 @@
 @endsection
 
 @section('js')
-  <script src="https://cdn.tiny.cloud/1/sf7otzj7k5k1q17yvc0vo0nco5kdhl5ls20rdeb429v8mpgz/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+  <script src="https://taufcrmsg.com/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
   <script>
     tinymce.init({
       selector: 'textarea',
