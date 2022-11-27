@@ -34,13 +34,7 @@ $users = App\Models\User::all();
         </div>
         <dl class="dl-horizontal">
           
-            <dt>{{ trans('letters.from') }}</dt>
-            <dd>{{ $letter->sender->first_name ." " . $letter->sender->last_name }}</dd>
-            <dt>{{ trans('letters.to') }}</dt>
-            <dd>{{  $letter->recever->first_name ." " . $letter->recever->last_name }}</dd>
-            <br>
-            <dd>{{ $letter->Subject }}</dd>
-            <br>
+        
           
            
           {!! $letter->message !!}
@@ -71,10 +65,7 @@ $users = App\Models\User::all();
 
         </dl>
 
-<div class="col-md-12"  style="text-align: center;">
-    <img src="{{ asset($stamps->image) }}" style="      max-width: 111px;
-"  id="image" readonly>
- 
+
 </div>
 
 <br>

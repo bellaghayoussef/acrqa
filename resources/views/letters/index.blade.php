@@ -62,11 +62,11 @@
                             <td>
                                 @if($letter->approved == 0 || $letter->approved == null)
                               
-                                <a href="{{ route('letters.letter.edit', $letter->id ) }}" type="button" name="" class="btn btn-warning" title="Pending">Pending</a>
+                                <a href="{{ route('letters.letter.show', $letter->id ) }}" type="button" name="" class="btn btn-warning" title="Pending">Pending</a>
                                 @elseif($letter->approved == 1 || $letter->approved == "1")
                                 <a href="{{ route('letters.letter.show', $letter->id ) }}" type="button" name="" class="btn btn-success" title="Approved">Approved</a>
                                 @else
-                                 <a href="{{ route('letters.letter.edit', $letter->id ) }}" type="button" name="" class="btn btn-danger" title="Refused">Refused</a>
+                                 <a href="{{ route('letters.letter.show', $letter->id ) }}" type="button" name="" class="btn btn-danger" title="Refused">Refused</a>
                             @endif</td>
 
                             <td>
