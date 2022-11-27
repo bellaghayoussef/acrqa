@@ -113,8 +113,9 @@ return [
     "update_route_response_description" => "The API's response will be JSON based data. The JSON object will be structured as follow",
     "updated_at" => "Updated At",
     "updated_at__placeholder" => "Enter updated at here...",
-    "validation_title" => "Validation"
-
+    "validation_title" => "Validation",
+ "Profession" => "Profession",
+    "Profession__placeholder" => "Enter Profession here...",
 
      "organization" => "organization",
     "organization__placeholder" => "Enter organization here...",

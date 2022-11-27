@@ -1,5 +1,5 @@
 
-<div class="form-group {{ $errors->has('udd') ? 'has-error' : '' }}">
+<div class="form-group col-6 {{ $errors->has('udd') ? 'has-error' : '' }}">
     <label for="udd" class="col-md-2 control-label">{{ trans('users.udd') }}</label>
     <div class="col-md-10">
         <input class="form-control" name="udd" type="text" id="udd" value="{{ old('udd', optional($user)->udd) }}" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.udd__placeholder') }}">
@@ -7,7 +7,7 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
+<div class="form-group col-6 {{ $errors->has('first_name') ? 'has-error' : '' }}">
     <label for="first_name" class="col-md-2 control-label">{{ trans('users.first_name') }}</label>
     <div class="col-md-10">
         <input class="form-control" name="first_name" type="text" id="first_name" value="{{ old('first_name', optional($user)->first_name) }}" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.first_name__placeholder') }}">
@@ -15,7 +15,7 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
+<div class="form-group col-6 {{ $errors->has('last_name') ? 'has-error' : '' }}">
     <label for="last_name" class="col-md-2 control-label">{{ trans('users.last_name') }}</label>
     <div class="col-md-10">
         <input class="form-control" name="last_name" type="text" id="last_name" value="{{ old('last_name', optional($user)->last_name) }}" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.last_name__placeholder') }}">
@@ -23,7 +23,7 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+<div class="form-group col-6 {{ $errors->has('email') ? 'has-error' : '' }}">
     <label for="email" class="col-md-2 control-label">{{ trans('users.email') }}</label>
     <div class="col-md-10">
         <input class="form-control" name="email" type="text" id="email" value="{{ old('email', optional($user)->email) }}" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.email__placeholder') }}">
@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
+<div class="form-group col-6 {{ $errors->has('phone') ? 'has-error' : '' }}">
     <label for="phone" class="col-md-2 control-label">{{ trans('users.phone') }}</label>
     <div class="col-md-10">
         <input class="form-control" name="phone" type="text" id="phone" value="{{ old('phone', optional($user)->phone) }}" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.phone__placeholder') }}">
@@ -39,7 +39,7 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('country_id') ? 'has-error' : '' }}">
+<div class="form-group col-6 {{ $errors->has('country_id') ? 'has-error' : '' }}">
     <label for="country_id" class="col-md-2 control-label">{{ trans('users.country_id') }}</label>
     <div class="col-md-10">
         <select class="form-control" id="country_id" name="country_id" required="true">
@@ -56,9 +56,9 @@
 </div>
 
 
-////////////////////////////// addd ///////////////////////////////
-
-<div class="form-group {{ $errors->has('organization') ? 'has-error' : '' }}">
+<!-- ////////////////////////////// addd ///////////////////////////////
+ -->
+<div class="form-group col-6 {{ $errors->has('organization') ? 'has-error' : '' }}">
     <label for="organization" class="col-md-2 control-label">{{ trans('users.organization') }}</label>
     <div class="col-md-10">
         <input class="form-control" name="organization" type="text" id="organization" value="{{ old('organization', optional($user)->organization) }}" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.organization__placeholder') }}">
@@ -68,7 +68,7 @@
 
 
 
-<div class="form-group {{ $errors->has('Region') ? 'has-error' : '' }}">
+<div class="form-group col-6 {{ $errors->has('Region') ? 'has-error' : '' }}">
     <label for="Region" class="col-md-2 control-label">{{ trans('users.Region') }}</label>
     <div class="col-md-10">
         <input class="form-control" name="Region" type="text" id="Region" value="{{ old('Region', optional($user)->Region) }}" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.Region__placeholder') }}">
@@ -79,7 +79,7 @@
 
 
 
-<div class="form-group {{ $errors->has('code_postal') ? 'has-error' : '' }}">
+<div class="form-group col-6 {{ $errors->has('code_postal') ? 'has-error' : '' }}">
     <label for="code_postal" class="col-md-2 control-label">{{ trans('users.code_postal') }}</label>
     <div class="col-md-10">
         <input class="form-control" name="code_postal" type="text" id="code_postal" value="{{ old('code_postal', optional($user)->code_postal) }}" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.code_postal__placeholder') }}">
@@ -90,7 +90,7 @@
 
 
 
-<div class="form-group {{ $errors->has('street') ? 'has-error' : '' }}">
+<div class="form-group col-6 {{ $errors->has('street') ? 'has-error' : '' }}">
     <label for="street" class="col-md-2 control-label">{{ trans('users.street') }}</label>
     <div class="col-md-10">
         <input class="form-control" name="street" type="text" id="street" value="{{ old('street', optional($user)->street) }}" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.street__placeholder') }}">
@@ -99,13 +99,25 @@
 </div>
 
 
+<div class="form-group col-6 {{ $errors->has('Profession') ? 'has-error' : '' }}">
+    <label for="Profession" class="col-md-2 control-label">{{ trans('users.Profession') }}</label>
+    <div class="col-md-10">
+        <input class="form-control" name="Profession" type="text" id="Profession" value="{{ old('Profession', optional($user)->Profession) }}" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.Profession__placeholder') }}">
+        {!! $errors->first('Profession', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
 
 
-<div class="form-group {{ $errors->has('Image') ? 'has-error' : '' }}">
+
+
+<div class="form-group col-6 {{ $errors->has('Image') ? 'has-error' : '' }}">
     <label for="Image" class="col-md-2 control-label">{{ trans('users.Image') }}</label>
     <div class="col-md-10">
+       <!--  -->
+       @if($user)
         <img src="{{ asset($user->Image) }}" style="    max-width: 300px;" type="text" class="form-control uploaded-file-name" readonly>
-        <input class="form-control" name="Image" type="file" id="Image" value="" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.Image__placeholder') }}">
+        @endif
+        <input class="form-control" name="Image" type="file" id="Image" value="" minlength="1" maxlength="255"  placeholder="{{ trans('users.Image__placeholder') }}">
         {!! $errors->first('Image', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -115,12 +127,12 @@
 
 
 
-
+<!-- 
 ////////////////////////////// addd ///////////////////////////////
+ -->
 
 
-
-<div class="form-group {{ $errors->has('role_id') ? 'has-error' : '' }}">
+<div class="form-group col-6 {{ $errors->has('role_id') ? 'has-error' : '' }}">
     <label for="role_id" class="col-md-2 control-label">Role</label>
     <div class="col-md-10">
         <select class="form-control" id="role_id" name="role_id" required="true">

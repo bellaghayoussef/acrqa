@@ -30,6 +30,7 @@ class User extends Authenticatable
 'Region',
 'code_postal',
 'Image',
+'Profession',
 'street',
     ];
 
