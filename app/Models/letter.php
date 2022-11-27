@@ -75,12 +75,12 @@ class letter extends Model
     }
   public function sender()
     {
-        return $this->belongsTo('App\Models\user','from');
+        return $this->belongsTo('App\Models\User','from');
     }
 
      public function recever()
     {
-        return $this->belongsTo('App\Models\user','to');
+        return $this->belongsTo('App\Models\User','to');
     }
 
 }
