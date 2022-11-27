@@ -25,9 +25,9 @@ $users = App\Models\User::all();
 <br>
 <br>
 
-        <div class="mb-3" style="align-self: flex-end;">
+        <div class="mb-3" >
             {{ $letter->code }}<br>
-   {!! DNS1D::getBarcodePNG($letter->code, "C128",1.4,16) !!}
+   
  <?php 
             echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG($letter->code, "C128",1.4,16) . '" alt="barcode"   />';
             ?>
