@@ -425,6 +425,20 @@ input:checked + .slider .off
 .mt-5, .mt-2, .my-5 {
     margin-top: 1rem!important;
 }
+@media print {
+  div.divFooter {
+    position: fixed;
+    bottom: 0;
+        max-height: 111px;
+    min-width: -webkit-fill-available;
+  }
+   div.divheader {
+    position: fixed;
+    top: 0;
+        max-height: 111px;
+    min-width: -webkit-fill-available;
+  }
+}
 </style>
 @stop
 

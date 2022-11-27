@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<div id="reportPrinting">
 
-<div class="panel panel-default">
+    <div class="panel panel-default">
     
 
     <div class="panel-body">
@@ -13,11 +14,12 @@ $stamps = App\Models\stamp::first();
 $users = App\Models\User::all();
 
 @endphp
-
+<div class="divheader">
  <img src="{{ asset($stamps->header) }}" style="      max-height: 111px;
     min-width: -webkit-fill-available;"  id="image" readonly>
 <br>
 <br>
+</div>
 <br>
 <br>
 <br>
@@ -39,10 +41,14 @@ $users = App\Models\User::all();
           
            
           {!! $letter->message !!}
-          @if($letter->Signature == '1')
-          {{ $letter->sender->first_name ." " . $letter->sender->last_name }}
-          <img src="{{ asset($letter->sender->Signature) }}" style="    max-width: 300px;" type="text" class="form-control uploaded-file-name" id="image" readonly>
-          @endif
+          <div class="col-md-3">
+              @if($letter->Signature == '1')
+         <h2> {{ $letter->sender->first_name ." " . $letter->sender->last_name }}</h2>
+          <br>
+          <img src="{{ asset($letter->sender->Signature) }}" style="    max-width: 300px;" type="text" id="image" readonly>
+          @endif 
+          </div>
+         
 
 
         </dl>
@@ -61,11 +67,79 @@ $users = App\Models\User::all();
 <br>
 
 
+<div class="divFooter"> <img src="{{ asset($stamps->footer) }}" style="      max-height: 111px;
+    min-width: -webkit-fill-available;"  id="image" readonly></div>
 
- <img src="{{ asset($stamps->footer) }}" style="      max-height: 111px;
-    min-width: -webkit-fill-available;"  id="image" readonly>
+
 
     </div>
 </div>
+</div>
+
+
+<div>
+      <button class="btn btn-success" title="{{ trans('letters.delete') }}" onclick="printReport()">
+                                            Print
+                                        </button>
+</div>
+
+
+
+
+@endsection
+
+@section('js')
+
+
+<script type="text/javascript">
+    function printReport()
+    {
+
+var printContents = document.getElementById("reportPrinting").innerHTML;
+var originalContents = document.body.innerHTML;
+
+document.body.innerHTML = printContents;
+
+window.print();
+
+document.body.innerHTML = originalContents;
+    }
+
+    var gAutoPrint = true;
+
+function processPrint(){
+
+if (document.getElementById != null){
+var html = '<HTML>\n<HEAD>\n';
+if (document.getElementsByTagName != null){
+var headTags = document.getElementsByTagName("head");
+if (headTags.length > 0) html += headTags[0].innerHTML;
+}
+
+html += '\n</HE' + 'AD>\n<BODY>\n';
+var printReadyElem = document.getElementById("reportPrinting");
+
+if (printReadyElem != null) html += printReadyElem.innerHTML;
+else{
+alert("Error, no contents.");
+return;
+}
+
+html += '\n</BO' + 'DY>\n</HT' + 'ML>';
+var printWin = window.open("","processPrint");
+printWin.document.open();
+printWin.document.write(html);
+printWin.document.close();
+
+if (gAutoPrint) printWin.print();
+} else alert("Browser not supported.");
+
+}
+
+</script>
+
+
+
+
 
 @endsection
