@@ -180,13 +180,29 @@ $user->assignRole($request->role_id);
             'country_id' => 'required|numeric|min:0',
            
             'password' => 'nullable',
-            'role_id' => 'required',
-           
+            'role_id' => 'nullable',
+           'organization' => 'nullable',
+'Region' => 'nullable',
+'code_postal' => 'nullable',
+'Image' => 'nullable',
+'street' => 'nullable',
         ];
         
         $data = $request->validate($rules);
 
         $data['password'] = 'password';
+
+        if($request->Image){
+             $file = request()->file('Image');
+$saved =$file->store('images', ['disk' => 'public']);
+
+
+
+      $data['password'] = $saved;
+
+
+
+        }
 
         return $data;
     }
@@ -210,12 +226,21 @@ $user->assignRole($request->role_id);
        }
  public function profil(){
     $user = auth()->user();
+    $countries = Country::where('stat',1)->pluck('name','id')->all();
 
-    return view('users.profil', compact('user'));
+    return view('users.profil', compact('user','countries'));
  }
 
 public function Signature(Request $request){
+
     $user = auth()->user();
+      try {
+            
+            $data = $this->getData($request);
+            
+            
+            $user->update($data);
+dd($request);
   if($request->signed){
             $folderPath = public_path('images/'); // create signatures folder in public directory
         $image_parts = explode(";base64,", $request->signed);
@@ -227,11 +252,31 @@ public function Signature(Request $request){
         file_put_contents($file, $image_base64);
 
       $user->Signature = 'images/'. $name;
+
       $user->save();
 
 
+
+        }elseif($request->signedimage){
+             $file = request()->file('signedimage');
+$saved =$file->store('images', ['disk' => 'public']);
+
+      $user->Signature = $saved;
+
+      $user->save();
+
+
+
         }
+        
     return redirect()->route('profil');
+       
+        } catch (Exception $exception) {
+ dd($exception);
+            return back()->withInput()
+                ->withErrors(['unexpected_error' => $exception->getMessage()]);
+        }  
+
  }
 
 

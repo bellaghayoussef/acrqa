@@ -26,6 +26,11 @@ class User extends Authenticatable
 'country_id',
 'password',
 'Signature',
+'organization',
+'Region',
+'code_postal',
+'Image',
+'street',
     ];
 
     /**

@@ -56,6 +56,69 @@
 </div>
 
 
+////////////////////////////// addd ///////////////////////////////
+
+<div class="form-group {{ $errors->has('organization') ? 'has-error' : '' }}">
+    <label for="organization" class="col-md-2 control-label">{{ trans('users.organization') }}</label>
+    <div class="col-md-10">
+        <input class="form-control" name="organization" type="text" id="organization" value="{{ old('organization', optional($user)->organization) }}" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.organization__placeholder') }}">
+        {!! $errors->first('organization', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+
+
+<div class="form-group {{ $errors->has('Region') ? 'has-error' : '' }}">
+    <label for="Region" class="col-md-2 control-label">{{ trans('users.Region') }}</label>
+    <div class="col-md-10">
+        <input class="form-control" name="Region" type="text" id="Region" value="{{ old('Region', optional($user)->Region) }}" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.Region__placeholder') }}">
+        {!! $errors->first('Region', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+
+
+
+<div class="form-group {{ $errors->has('code_postal') ? 'has-error' : '' }}">
+    <label for="code_postal" class="col-md-2 control-label">{{ trans('users.code_postal') }}</label>
+    <div class="col-md-10">
+        <input class="form-control" name="code_postal" type="text" id="code_postal" value="{{ old('code_postal', optional($user)->code_postal) }}" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.code_postal__placeholder') }}">
+        {!! $errors->first('code_postal', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+
+
+
+<div class="form-group {{ $errors->has('street') ? 'has-error' : '' }}">
+    <label for="street" class="col-md-2 control-label">{{ trans('users.street') }}</label>
+    <div class="col-md-10">
+        <input class="form-control" name="street" type="text" id="street" value="{{ old('street', optional($user)->street) }}" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.street__placeholder') }}">
+        {!! $errors->first('street', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+
+
+
+<div class="form-group {{ $errors->has('Image') ? 'has-error' : '' }}">
+    <label for="Image" class="col-md-2 control-label">{{ trans('users.Image') }}</label>
+    <div class="col-md-10">
+        <img src="{{ asset($user->Image) }}" style="    max-width: 300px;" type="text" class="form-control uploaded-file-name" readonly>
+        <input class="form-control" name="Image" type="file" id="Image" value="" minlength="1" maxlength="255" required="true" placeholder="{{ trans('users.Image__placeholder') }}">
+        {!! $errors->first('Image', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+
+
+
+
+
+
+////////////////////////////// addd ///////////////////////////////
+
+
 
 <div class="form-group {{ $errors->has('role_id') ? 'has-error' : '' }}">
     <label for="role_id" class="col-md-2 control-label">Role</label>

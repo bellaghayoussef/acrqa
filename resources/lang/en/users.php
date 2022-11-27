@@ -105,7 +105,7 @@ return [
     "this_parameter_must_be_present_in_the_request" => "This parameter must be present in the request.",
     "time_title" => "Time",
     "type_title" => "Type",
-    "udd" => "Udd",
+    "udd" => "Civil ID / Passport",
     "udd__placeholder" => "Enter udd here...",
     "unexpected_error" => "Unexpected error occurred while trying to process your request.",
     "update" => "Update",
@@ -114,4 +114,16 @@ return [
     "updated_at" => "Updated At",
     "updated_at__placeholder" => "Enter updated at here...",
     "validation_title" => "Validation"
+
+
+     "organization" => "organization",
+    "organization__placeholder" => "Enter organization here...",
+    "Region" => "Region",
+    "Region__placeholder" => "Enter Region here...",
+    "code_postal" => "code_postal",
+    "code_postal__placeholder" => "Enter code_postal here...",
+    "Image" => "Image",
+    "Image__placeholder" => "Enter Image here...",
+    "street" => "street",
+    "street__placeholder" => "Enter street here...",
 ];
