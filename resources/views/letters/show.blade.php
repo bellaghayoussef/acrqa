@@ -30,6 +30,8 @@ $users = App\Models\User::all();
    
  <?php 
             echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG($letter->code, "C128",1.4,16) . '" alt="barcode"   />';
+
+
             ?>
         </div>
         <dl class="dl-horizontal">
@@ -68,12 +70,6 @@ $users = App\Models\User::all();
 
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 
 <div class="divFooter"> <img src="{{ asset($stamps->footer) }}" style="      max-height: 111px;
