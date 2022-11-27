@@ -51,7 +51,7 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('stamps.stamp.update', $stamp->id) }}" id="edit_stamp_form" name="edit_stamp_form" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('stamps.stamp.update', $stamp->id) }}" id="edit_stamp_form" name="edit_stamp_form" accept-charset="UTF-8" class="form-horizontal row" enctype="multipart/form-data">
             {{ csrf_field() }}
             <input name="_method" type="hidden" value="PUT">
             @include ('stamps.form', [

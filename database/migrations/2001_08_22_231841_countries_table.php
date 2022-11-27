@@ -22,7 +22,7 @@ class CountriesTable extends Migration
             $table->char('iso3', 3  )->nullable();
             $table->smallinteger('numcode')->nullable();
             $table->integer('phonecode');
-            $table->boolean('stat')->default(0);
+            $table->boolean('stat')->default(1);
         });
     }
 

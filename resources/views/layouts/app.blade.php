@@ -129,6 +129,9 @@ input:checked + .slider .off
     margin-left: 1px;
     padding: 36px;
 }
+.glyphicon-open:before {
+    content: "\e105";
+}
 .glyphicon-asterisk:before{content:"\2a";}
 .glyphicon-plus:before{content:"\2b";}
 .glyphicon-euro:before{content:"\20ac";}
@@ -286,7 +289,7 @@ input:checked + .slider .off
 .glyphicon-new-window:before{content:"\e164";}
 .glyphicon-record:before{content:"\e165";}
 .glyphicon-save:before{content:"\e166";}
-.glyphicon-open:before{content:"\e167";}
+
 .glyphicon-saved:before{content:"\e168";}
 .glyphicon-import:before{content:"\e169";}
 .glyphicon-export:before{content:"\e170";}

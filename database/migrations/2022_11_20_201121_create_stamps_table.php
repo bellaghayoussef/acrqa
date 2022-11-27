@@ -16,9 +16,9 @@ class CreateStampsTable extends Migration
         {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('country_id')->unsigned()->nullable()->index();
-            $table->string('type');
-            $table->string('image');
+            $table->string('footer')->nullable();
+            $table->string('header')->nullable();
+            $table->string('image')->nullable();
 
         });
     }

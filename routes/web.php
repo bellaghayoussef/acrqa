@@ -5,6 +5,7 @@ use App\Http\Controllers\CountriesController;
 use App\Models\countries;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\StampsController;
+use App\Http\Controllers\LettersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,3 +112,26 @@ Route::group([
 });
 
 
+
+Route::group([
+    'prefix' => 'letters',
+], function () {
+    Route::get('/', [LettersController::class, 'index'])
+         ->name('letters.letter.index');
+    Route::get('/create', [LettersController::class, 'create'])
+         ->name('letters.letter.create');
+    Route::get('/show/{letter}',[LettersController::class, 'show'])
+         ->name('letters.letter.show')->where('id', '[0-9]+');
+    Route::get('/{letter}/edit',[LettersController::class, 'edit'])
+         ->name('letters.letter.edit')->where('id', '[0-9]+');
+    Route::post('/', [LettersController::class, 'store'])
+         ->name('letters.letter.store');
+    Route::put('letter/{letter}', [LettersController::class, 'update'])
+         ->name('letters.letter.update')->where('id', '[0-9]+');
+    Route::delete('/letter/{letter}',[LettersController::class, 'destroy'])
+         ->name('letters.letter.destroy')->where('id', '[0-9]+');
+
+Route::get('/approved/{letter}',[LettersController::class, 'approved'])
+         ->name('approved')->where('id', '[0-9]+');
+         
+});

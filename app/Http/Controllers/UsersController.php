@@ -20,7 +20,12 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = user::with('country')->paginate(25);
+        if(auth()->user()->hasRole('super admin')){
+           $users = user::with('country')->paginate(25); 
+       }else{
+        $users = user::where('country_id',auth()->user()->country_id)->with('country')->paginate(25);
+       }
+        
 
         return view('users.index', compact('users'));
     }
@@ -55,25 +60,25 @@ class UsersController extends Controller
 $user->assignRole($request->role_id);
 $container = Country::find($user->country_id);
 
-// try {
-//       $sid = 'AC6df6b0f4c3d2f8188cb2cf40199f9d66';
-// $token = '5adfa781ac9100d442d67ea6147b4337';
-// $cliente = new Client($sid, $token);
+try {
+      $sid = 'AC6df6b0f4c3d2f8188cb2cf40199f9d66';
+$token = '5adfa781ac9100d442d67ea6147b4337';
+$cliente = new Client($sid, $token);
 
-// $phoneNum = '+'.$container->phonecode.$user->phone;
-// $cliente->messages->create(
-//     // the number you'd like to send the message to
-//      $phoneNum,
-//     array(
-//         // A Twilio phone number you purchased at twilio.com/console
-//         'from' =>  '+14256005591',
-//         // the body of the text message you'd like to send
-//         'body' => 'تم اضافتك في الاتحاد العربي لرياضة سباق الهجن باسم '. $user->first_name .' '. $user->last_name .' (و بصلاحية  '. $user->getRoleNames()[0] .' ) بدولة  '. $container->name .'  يمكنك الان تسجيل الدخول على acr.qa'
-//     )
-// );
-// } catch (Exception $e) {
-//    return Response::json(array('success' =>$phoneNum . $e->getMessage())); 
-// }
+$phoneNum = '+'.$container->phonecode.$user->phone;
+$cliente->messages->create(
+    // the number you'd like to send the message to
+     $phoneNum,
+    array(
+        // A Twilio phone number you purchased at twilio.com/console
+        'from' =>  '+14256005591',
+        // the body of the text message you'd like to send
+        'body' => 'تم اضافتك في الاتحاد العربي لرياضة سباق الهجن باسم '. $user->first_name .' '. $user->last_name .' (و بصلاحية  '. $user->getRoleNames()[0] .' ) بدولة  '. $container->name .'  يمكنك الان تسجيل الدخول على acr.qa'
+    )
+);
+} catch (Exception $e) {
+   return Response::json(array('success' =>$phoneNum . $e->getMessage())); 
+}
 
 
             return redirect()->route('users.user.index')
@@ -243,7 +248,7 @@ public function Signature(Request $request){
             
             
             $user->update($data);
-dd($request);
+
   if($request->signed){
             $folderPath = public_path('images/'); // create signatures folder in public directory
         $image_parts = explode(";base64,", $request->signed);
@@ -272,6 +277,21 @@ $saved =$file->store('images', ['disk' => 'public']);
 
         }
         
+
+        if($request->Image){
+             $file = request()->file('Image');
+$saved =$file->store('images', ['disk' => 'public']);
+
+
+
+    
+
+$user->Image = $saved;
+
+      $user->save();
+
+        }
+
     return redirect()->route('profil');
        
         } catch (Exception $exception) {

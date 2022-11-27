@@ -51,8 +51,8 @@
                 <table id="" class="table mobile-accordion ">
                     <thead>
                         <tr>
-                            <th>{{ trans('stamps.country_id') }}</th>
-                            <th>{{ trans('stamps.type') }}</th>
+                            <th>{{ trans('stamps.image') }}</th>
+                          
 
                             <th></th>
                         </tr>
@@ -60,8 +60,8 @@
                     <tbody>
                     @foreach($stamps as $stamp)
                         <tr>
-                            <td>{{ optional($stamp->country)->name }}</td>
-                            <td>{{ $stamp->type }}</td>
+                            <td>    <img src="{{ asset($stamp->image) }}" style="    max-width: 300px;" type="text" class="form-control uploaded-file-name" readonly></td>
+                           
 
                             <td>
 

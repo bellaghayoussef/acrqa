@@ -147,8 +147,8 @@ class StampsController extends Controller
     {
 
         $rules = [
-                'country_id' => 'numeric|min:0|max:4294967295|nullable',
-            'type' => 'required|string|min:1',
+                'header' => 'nullable|file',
+            'footer' => 'nullable|file',
             'image' => 'nullable|file', 
         ];
            
@@ -158,6 +158,15 @@ class StampsController extends Controller
         }
         if ($request->hasFile('image')) {
             $data['image'] = $this->moveFile($request->file('image'));
+        }
+
+         if ($request->hasFile('footer')) {
+            $data['footer'] = $this->moveFile($request->file('footer'));
+        }
+
+
+         if ($request->hasFile('header')) {
+            $data['header'] = $this->moveFile($request->file('header'));
         }
         if($request->signed){
             $folderPath = public_path('images/'); // create signatures folder in public directory
@@ -190,7 +199,7 @@ class StampsController extends Controller
         if (!$file->isValid()) {
             return '';
         }
-        $file = request()->file('image');
+   
 $saved =$file->store('images', ['disk' => 'public']);
  
 

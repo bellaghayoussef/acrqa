@@ -28,8 +28,8 @@ class stamp extends Model
      * @var array
      */
     protected $fillable = [
-                  'country_id',
-                  'type',
+                  'header',
+                  'footer',
                   'image'
               ];
 

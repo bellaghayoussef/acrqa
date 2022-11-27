@@ -37,13 +37,21 @@
 
     <div class="panel-body">
         <dl class="dl-horizontal">
-            <dt>{{ trans('stamps.country_id') }}</dt>
-            <dd>{{ optional($stamp->country)->name }}</dd>
-            <dt>{{ trans('stamps.type') }}</dt>
-            <dd>{{ $stamp->type }}</dd>
+            
             <dt>{{ trans('stamps.image') }}</dt>
             <dd>
              <img src="{{ asset($stamp->image) }}" style="    max-width: 300px;" type="text" class="form-control uploaded-file-name" readonly></dd>
+
+
+              <dt>{{ trans('stamps.header') }}</dt>
+            <dd>
+             <img src="{{ asset($stamp->header) }}" style="    max-width: 300px;" type="text" class="form-control uploaded-file-name" readonly></dd>
+
+
+
+              <dt>{{ trans('stamps.footer') }}</dt>
+            <dd>
+             <img src="{{ asset($stamp->footer) }}" style="    max-width: 300px;" type="text" class="form-control uploaded-file-name" readonly></dd>
 
         </dl>
 

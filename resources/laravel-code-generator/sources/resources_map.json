@@ -52,5 +52,9 @@
     {
         "model-name": "stamp",
         "resource-file": "stamps.json"
+    },
+    {
+        "model-name": "letter",
+        "resource-file": "letters.json"
     }
 ]

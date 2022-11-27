@@ -28,6 +28,15 @@ return [
     "id" => "Id",
     "id__placeholder" => "Enter id here...",
     "image" => "stamp",
+
+
+    "footer" => "footer",
+    "header" => "header",
+    
+
+
+    
+    
     "image__placeholder" => "Enter stamp here...",
     "index_route_description" => "Retrieve existing stamps.",
     "index_route_response_description" => "The API's response will be JSON based data. The JSON object will be structured as follow",

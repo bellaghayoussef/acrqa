@@ -1,30 +1,6 @@
 
-<div class="form-group {{ $errors->has('country_id') ? 'has-error' : '' }}" style="display:none">
-    <label for="country_id" class="col-md-2 control-label">{{ trans('stamps.country_id') }}</label>
-    <div class="col-md-10">
-        <select class="form-control" id="country_id" name="country_id">
-        	    <option value="1" selected></option>
-        </select>
-        
-        {!! $errors->first('country_id', '<p class="help-block">:message</p>') !!}
-    </div>
-</div>
 
-<div class="form-group {{ $errors->has('type') ? 'has-error' : '' }}" style="display:none">
-    <label for="type" class="col-md-2 control-label">{{ trans('stamps.type') }}</label>
-    <div class="col-md-10">
-        <select class="form-control" id="type" name="type" required="true">
-        	    <option value="super admin" selected>
-			    
-			    </option>
-
-        </select>
-        
-        {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
-    </div>
-</div>
-
-<div class="form-group {{ $errors->has('image') ? 'has-error' : '' }}">
+<div class="form-group col-12 {{ $errors->has('image') ? 'has-error' : '' }}">
     <label for="image" class="col-md-2 control-label">{{ trans('stamps.image') }}</label>
     <div class="col-md-10">
         <div class="input-group uploaded-file-group">
@@ -43,6 +19,58 @@
             </div>
         @endif
         {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+
+
+
+<div class="form-group  col-6 {{ $errors->has('header') ? 'has-error' : '' }}">
+    <label for="header" class="col-md-2 control-label">{{ trans('stamps.header') }}</label>
+    <div class="col-md-10">
+        <div class="input-group uploaded-file-group">
+            <label class="input-group-btn">
+                <span class="btn btn-default">
+                    Browse <input type="file" name="header" id="header" class="hidden">
+                </span>
+            </label>
+           
+        </div>
+
+        @if (isset($stamp->header) && !empty($stamp->header))
+            <div class="input-group input-width-input">
+                 <img src="{{ asset($stamp->header) }}" style="    max-width: 300px;" type="text" class="form-control uploaded-file-name" readonly>
+               
+            </div>
+        @endif
+        {!! $errors->first('header', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+
+
+
+
+
+<div class="form-group  col-6 {{ $errors->has('footer') ? 'has-error' : '' }}">
+    <label for="footer" class="col-md-2 control-label">{{ trans('stamps.footer') }}</label>
+    <div class="col-md-10">
+        <div class="input-group uploaded-file-group">
+            <label class="input-group-btn">
+                <span class="btn btn-default">
+                    Browse <input type="file" name="footer" id="footer" class="hidden">
+                </span>
+            </label>
+           
+        </div>
+
+        @if (isset($stamp->footer) && !empty($stamp->footer))
+            <div class="input-group input-width-input">
+                 <img src="{{ asset($stamp->footer) }}" style="    max-width: 300px;" type="text" class="form-control uploaded-file-name" readonly>
+               
+            </div>
+        @endif
+        {!! $errors->first('footer', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 

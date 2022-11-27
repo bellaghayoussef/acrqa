@@ -302,13 +302,63 @@ return [
            
         ],
 
+
+         [
+            'text'        => ' letters',
+            'url'         => 'letters',
+             'icon'        => 'fa fa-book ',
+
+           
+           
+        ],
+
         
+
+
+
+        [
+            'text'        => ' User',
+            
+            'icon'        => 'far fa-user ',
+            'can'         => 'admin',
+            'submenu' => [
+                [
+                    'text' => 'New user',
+                    'url'         => 'users/create',
+                ],
+                [
+                    'text' => 'Manage User',
+                    'url'         => 'users',
+                ],
+                
+           
+        ],
+        ],
+
 
         [
             'text'        => ' User',
             
             'icon'        => 'far fa-user ',
             'can'         => 'super admin',
+            'submenu' => [
+                [
+                    'text' => 'New user',
+                    'url'         => 'users/create',
+                ],
+                [
+                    'text' => 'Manage User',
+                    'url'         => 'users',
+                ],
+                
+           
+        ],
+        ],
+        [
+            'text'        => ' User',
+            
+            'icon'        => 'far fa-user ',
+            'can'         => 'super admin || admin',
             'submenu' => [
                 [
                     'text' => 'New user',

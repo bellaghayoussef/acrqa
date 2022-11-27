@@ -57,4 +57,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\countries','country_id');
     }
+
+
+    public function from()
+    {
+        return $this->belongsTo('App\Models\user','form');
+    }
 }

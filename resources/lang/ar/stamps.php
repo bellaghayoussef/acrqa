@@ -24,8 +24,15 @@ return [
     "field_type_title" => "Field Type",
     "file_title" => "File",
     "general_description" => "Allows you to list, create, edit, show and delete stamps.",
-    "header_title" => "Header",
+    "header_title" => "الهيدر الرسالة",
     "id" => "Id",
+
+
+
+    "footer" => "فوتر الرسالة",
+    "header" => "الهيدر للرسالة",
+    
+    
     "id__placeholder" => "Enter id here...",
     "image" => "ختم",
     "image__placeholder" => "أدخل الختم هنا ...",

@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
 $newUser->assignRole($role1);
 
          $countries = array(
-            array('id' => '1','iso' => 'QA','name' => 'Qatar','nicename' => 'قطر','iso3' => 'QAR','numcode' => '4','phonecode' => '974'),
+            array('id' => '1','iso' => 'QA','name' => 'Qatar','nicename' => 'قطر','iso3' => 'QAR','numcode' => '4','phonecode' => '974','stat' => '1'),
          
           );
 
