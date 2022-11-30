@@ -21,7 +21,11 @@ class ArchiveController extends Controller
  if(auth()->user()->hasRole('super admin')){
             $letters = letter::paginate(25);
        }else{
-        $letters = letter::where('from',auth()->user()->id)->orwhere(function ($query)  {
+        $letters = letter::where(function ($query)  {
+    $query->where('from',  auth()->user()->id)
+          ->Where('approved', '1')
+           ->Where('accepted', '1');
+})->orwhere(function ($query)  {
     $query->where('to',  auth()->user()->id)
           ->Where('approved', '1')
            ->Where('accepted', '1');
