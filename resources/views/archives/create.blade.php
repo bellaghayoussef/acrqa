@@ -31,7 +31,7 @@
             <form method="POST" action="{{ route('archives.archive.store') }}" accept-charset="UTF-8" id="create_letter_form" name="create_letter_form" class="form-horizontal row">
             {{ csrf_field() }}
             @include ('archives.form', [
-                                        'letter' => null,
+                                        'archive' => null,
                                       ])
 
                 <div class="form-group">

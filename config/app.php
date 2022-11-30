@@ -200,6 +200,7 @@ Milon\Barcode\BarcodeServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+         Barryvdh\DomPDF\ServiceProvider::class
 
     ],
 
@@ -219,5 +220,6 @@ Milon\Barcode\BarcodeServiceProvider::class,
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
+    "PDF" => Barryvdh\DomPDF\Facade::class
 
 ];

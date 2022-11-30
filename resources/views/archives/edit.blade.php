@@ -26,11 +26,11 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('archives.archive.update', $letter->id) }}" id="edit_letter_form" name="edit_letter_form" accept-charset="UTF-8" class="form-horizontal row">
+            <form method="POST" action="{{ route('archives.archive.update', $Archive->id) }}" id="edit_letter_form" name="edit_letter_form" accept-charset="UTF-8" class="form-horizontal row">
             {{ csrf_field() }}
             <input name="_method" type="hidden" value="PUT">
             @include ('archives.form', [
-                                        'letter' => $letter,
+                                        'archive' => $Archive,
                                       ])
 
                         <input class="btn btn-primary" type="submit" value="{{ trans('letters.update') }}">

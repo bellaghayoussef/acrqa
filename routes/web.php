@@ -135,6 +135,8 @@ Route::group([
 
          
 });
+    Route::get('/createPDF/{letter}',[ArchiveController::class, 'createPDF'])
+         ->name('createPDF')->where('id', '[0-9]+');
 
 Route::group([
     'prefix' => 'letters',
@@ -160,3 +162,7 @@ Route::get('/approved/{letter}',[LettersController::class, 'approved'])
          ->name('accepted')->where('id', '[0-9]+');
          
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

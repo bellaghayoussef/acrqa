@@ -3,39 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\letter;
+use App\Models\Archive;
 use Illuminate\Http\Request;
 use Exception;
 
+use PDF;
+use Johntaa\Arabic\Arabic\I18N_Arabic;
 class ArchiveController extends Controller
 {
 
     /**
-     * Display a listing of the letters.
+     * Display a listing of the Archives.
      *
      * @return \Illuminate\View\View
      */
     public function index()
     {
        
- if(auth()->user()->hasRole('super admin')){
-            $letters = letter::paginate(25);
-       }else{
-        $letters = letter::where(function ($query)  {
-    $query->where('from',  auth()->user()->id)
-          ->Where('approved', '1')
-           ->Where('accepted', '1');
-})->orwhere(function ($query)  {
-    $query->where('to',  auth()->user()->id)
-          ->Where('approved', '1')
-           ->Where('accepted', '1');
-})->paginate(25);
-       }
-        return view('archives.index', compact('letters'));
+
+            $Archives = Archive::where('user_id',auth()->user()->id)->paginate(25);
+      
+        return view('archives.index', compact('Archives'));
     }
 
     /**
-     * Show the form for creating a new letter.
+     * Show the form for creating a new Archive.
      *
      * @return \Illuminate\View\View
      */
@@ -47,7 +39,7 @@ class ArchiveController extends Controller
     }
 
     /**
-     * Store a new letter in the storage.
+     * Store a new Archive in the storage.
      *
      * @param Illuminate\Http\Request $request
      *
@@ -57,22 +49,19 @@ class ArchiveController extends Controller
     {
    
         try {
-            $request->approved = "0";
+         
             $data = $this->getData($request);
-             $data['from'] = auth()->user()->id;
-             $data['to'] = auth()->user()->id;
-                $data['approved'] = 1;
-                $data['vu'] = 1;
+             
+             $data['useri_d'] = auth()->user()->id;
+              
 
-                         $second = str_pad(count(letter::all())+1, 5, '0', STR_PAD_LEFT);
-
-           
+                       
 
            
-            letter::create($data);
+            Archive::create($data);
 
             return redirect()->route('archives.archive.index')
-                ->with('success_message', trans('letters.model_was_added'));
+                ->with('success_message', trans('Archives.model_was_added'));
         } catch (Exception $exception) {
 
             return back()->withInput()
@@ -81,7 +70,7 @@ class ArchiveController extends Controller
     }
 
     /**
-     * Display the specified letter.
+     * Display the specified Archive.
      *
      * @param int $id
      *
@@ -90,17 +79,14 @@ class ArchiveController extends Controller
     public function show($id)
     {
 
-        $letter = letter::findOrFail($id);
- if(auth()->user()->id == $letter->to){
-    $letter->vu = 1;
-    $letter->save();
- }
-        return view('archives.show', compact('letter'));
+        $archive = Archive::findOrFail($id);
+ 
+        return view('archives.show', compact('archive'));
  
     }
 
     /**
-     * Show the form for editing the specified letter.
+     * Show the form for editing the specified Archive.
      *
      * @param int $id
      *
@@ -108,17 +94,13 @@ class ArchiveController extends Controller
      */
     public function edit($id)
     {
-        $letter = letter::findOrFail($id);
-         if(auth()->user()->id == $letter->to){
-    $letter->vu = 1;
-    $letter->save();
- }
-
-        return view('archives.edit', compact('letter'));
+        $Archive = Archive::findOrFail($id);
+    
+        return view('archives.edit', compact('Archive'));
     }
 
     /**
-     * Update the specified letter in the storage.
+     * Update the specified Archive in the storage.
      *
      * @param int $id
      * @param Illuminate\Http\Request $request
@@ -127,24 +109,25 @@ class ArchiveController extends Controller
      */
     public function update($id, Request $request)
     {
+
         try {
             
             $data = $this->getData($request);
-            
-            $letter = letter::findOrFail($id);
-            $letter->update($data);
-
+           
+            $Archive = Archive::findOrFail($id);
+            $Archive->update($data);
+ 
             return redirect()->route('archives.archive.index')
-                ->with('success_message', trans('letters.model_was_updated'));
+                ->with('success_message', trans('Archives.model_was_updated'));
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => trans('letters.unexpected_error')]);
+                ->withErrors(['unexpected_error' => trans('Archives.unexpected_error')]);
         }        
     }
 
     /**
-     * Remove the specified letter from the storage.
+     * Remove the specified Archive from the storage.
      *
      * @param int $id
      *
@@ -153,15 +136,15 @@ class ArchiveController extends Controller
     public function destroy($id)
     {
         try {
-            $letter = letter::findOrFail($id);
-            $letter->delete();
+            $Archive = Archive::findOrFail($id);
+            $Archive->delete();
 
             return redirect()->route('archives.archive.index')
-                ->with('success_message', trans('letters.model_was_deleted'));
+                ->with('success_message', trans('Archives.model_was_deleted'));
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => trans('letters.unexpected_error')]);
+                ->withErrors(['unexpected_error' => trans('Archives.unexpected_error')]);
         }
     }
 
@@ -176,38 +159,37 @@ class ArchiveController extends Controller
     {
 
         $rules = [
-                'to' => 'string|min:1|nullable',
+               
             'Subject' => 'string|min:1|max:255|nullable',
             'message' => 'String|nullable|string|min:0',
-            'Signature' => 'string|nullable|min:0', 
-            'code' => 'string|nullable'
+           
+            'in' => 'string|nullable',
+            'date' => 'string|nullable',
+            'code' => 'string|nullable',
         ];
         
         $data = $request->validate($rules);
 
- $data['from'] = auth()->user()->id;
+ $data['user_id'] = auth()->user()->id;
 
         return $data;
     }
 
-   public function approved($id)
-    {
-        $letter = letter::findOrFail($id);
-        $letter->approved = 1;
-        $letter->save();
+  
 
-        return view('archives.show', compact('letter'));
+       public function createPDF($id) {
+      // retreive all records from db
+
+      $archive = Archive::findOrFail($id);
+
+ 
+     $pdf = PDF::loadView('archives.pdf', compact('archive'));
+
+       
+
+      
+        
+        return $pdf->download($archive->date.'-'.$archive->in.'-'.$archive->code.'.pdf');
     }
-
-     public function accepted($id)
-    {
-        $letter = letter::findOrFail($id);
-        $letter->accepted = 1;
-        $letter->save();
-
-        return view('archives.show', compact('letter'));
-    }
-
-    
 
 }
