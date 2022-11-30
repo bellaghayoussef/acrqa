@@ -59,8 +59,5 @@ class User extends Authenticatable
     }
 
 
-    public function from()
-    {
-        return $this->belongsTo('App\Models\user','form');
-    }
+  
 }

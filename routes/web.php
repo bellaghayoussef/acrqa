@@ -6,6 +6,7 @@ use App\Models\countries;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\StampsController;
 use App\Http\Controllers\LettersController;
+use App\Http\Controllers\ArchiveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,6 +113,28 @@ Route::group([
 });
 
 
+
+Route::group([
+    'prefix' => 'archives',
+], function () {
+    Route::get('/', [ArchiveController::class, 'index'])
+         ->name('archives.archive.index');
+    Route::get('/create', [ArchiveController::class, 'create'])
+         ->name('archives.archive.create');
+    Route::get('/show/{letter}',[ArchiveController::class, 'show'])
+         ->name('archives.archive.show')->where('id', '[0-9]+');
+    Route::get('/{letter}/edit',[ArchiveController::class, 'edit'])
+         ->name('archives.archive.edit')->where('id', '[0-9]+');
+    Route::post('/', [ArchiveController::class, 'store'])
+         ->name('archives.archive.store');
+    Route::put('archive/{letter}', [ArchiveController::class, 'update'])
+         ->name('archives.archive.update')->where('id', '[0-9]+');
+    Route::delete('/archive/{letter}',[ArchiveController::class, 'destroy'])
+         ->name('archives.archive.destroy')->where('id', '[0-9]+');
+
+
+         
+});
 
 Route::group([
     'prefix' => 'letters',

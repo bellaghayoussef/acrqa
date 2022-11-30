@@ -311,6 +311,14 @@ return [
            
            
         ],
+  [
+            'text'        => ' Archives',
+            'url'         => 'archives',
+             'icon'        => 'fa fa-book ',
+
+           
+           
+        ],
 
         
 
@@ -358,7 +366,7 @@ return [
             'text'        => ' User',
             
             'icon'        => 'far fa-user ',
-            'can'         => 'super admin || admin',
+            'can'         => 'admin',
             'submenu' => [
                 [
                     'text' => 'New user',
