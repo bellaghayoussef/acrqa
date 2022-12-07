@@ -72,6 +72,8 @@ $users = App\Models\User::all();
 
 
 
+
+
 <div class="divFooter"> <img src="{{ asset($stamps->footer) }}" style="      max-height: 111px;
     min-width: -webkit-fill-available;"  id="image" readonly></div>
 
