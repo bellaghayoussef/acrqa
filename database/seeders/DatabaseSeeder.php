@@ -30,6 +30,10 @@ class DatabaseSeeder extends Seeder
         $role3 = Role::create(['name' => 'user']);
         $role3->givePermissionTo($permission3);
 
+        $permission4 = Permission::create(['name' => 'secretariat']);
+        $role4 = Role::create(['name' => 'secretariat']);
+        $role4->givePermissionTo($permission3);
+
 
         // \App\Models\User::factory(10)->create();
  $newUser = \App\Models\User::create([

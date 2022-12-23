@@ -36,15 +36,15 @@ $users = App\Models\User::all();
 
 <div class="col-md-6"></div>
 <div class="form-group col-md-6 {{ $errors->has('Subject') ? 'has-error' : '' }}">
-    <label for="Subject" class="col-md-2 control-label">{{ trans('letters.Subject') }}</label>
+    <label for="Subject" class="col-md-4 control-label">{{ trans('letters.Subject') }}</label>
     <div class="col-md-10">
         <input class="form-control" name="Subject" type="text" id="Subject" value="{{ old('Subject', optional($archive)->Subject) }}" minlength="1" maxlength="255" placeholder="{{ trans('letters.Subject__placeholder') }}">
         {!! $errors->first('Subject', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 
-<div class="form-group col-md-12{{ $errors->has('message') ? 'has-error' : '' }}">
-    <label for="message" class="col-md-2 control-label">{{ trans('letters.message') }}</label>
+<div class="form-group  col-md-12{{ $errors->has('message') ? 'has-error' : '' }}">
+    <label for="message" class="col-md-4 control-label">{{ trans('letters.message') }}</label>
     <div class="col-md-10">
         <textarea class="form-control" name="message" type="text" id="message" value="" maxlength="1000" placeholder="{{ trans('letters.message__placeholder') }}">{{ old('message', optional($archive)->message) }}</textarea>
         {!! $errors->first('message', '<p class="help-block">:message</p>') !!}

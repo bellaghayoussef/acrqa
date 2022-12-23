@@ -7,6 +7,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\StampsController;
 use App\Http\Controllers\LettersController;
 use App\Http\Controllers\ArchiveController;
+use App\Http\Controllers\secretariatcontroler;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,6 +137,31 @@ Route::group([
          
 });
     Route::get('/createPDF/{letter}',[ArchiveController::class, 'createPDF'])
+         ->name('createPDF')->where('id', '[0-9]+');
+
+
+         Route::group([
+    'prefix' => 'secretariat',
+], function () {
+    Route::get('/', [secretariatcontroler::class, 'index'])
+         ->name('secretariat.secretariat.index');
+    Route::get('/create', [secretariatcontroler::class, 'create'])
+         ->name('secretariat.secretariat.create');
+    Route::get('/show/{letter}',[secretariatcontroler::class, 'show'])
+         ->name('secretariat.secretariat.show')->where('id', '[0-9]+');
+    Route::get('/{letter}/edit',[secretariatcontroler::class, 'edit'])
+         ->name('secretariat.secretariat.edit')->where('id', '[0-9]+');
+    Route::post('/', [secretariatcontroler::class, 'store'])
+         ->name('secretariat.secretariat.store');
+    Route::put('secretariat/{letter}', [secretariatcontroler::class, 'update'])
+         ->name('secretariat.secretariat.update')->where('id', '[0-9]+');
+    Route::delete('/secretariat/{letter}',[secretariatcontroler::class, 'destroy'])
+         ->name('secretariat.secretariat.destroy')->where('id', '[0-9]+');
+
+
+         
+});
+    Route::get('secretariat/createPDF/{letter}',[secretariatcontroler::class, 'createPDF'])
          ->name('createPDF')->where('id', '[0-9]+');
 
 Route::group([
